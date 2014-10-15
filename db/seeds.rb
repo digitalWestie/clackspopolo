@@ -14,10 +14,10 @@ Popolo::Post.destroy_all
 
 council = Popolo::Organization.create(name: 'Clackmannanshire Council', classification: 'Local Authority')
 
-labour = Popolo::Organization.create(name:'Labour', classification: 'Political Party')
+labour = Popolo::Organization.create(name:'Labour Party', classification: 'Political Party')
 tories = Popolo::Organization.create(name:'Conservatives', classification: 'Political Party')
 nats   = Popolo::Organization.create(name:'SNP', classification: 'Political Party')
-greens = Popolo::Organization.create(name:'Green', classification: 'Political Party') # no greens...
+greens = Popolo::Organization.create(name:'Green Party', classification: 'Political Party') # no greens...
 
 puts "Created #{Popolo::Organization.count} organizations"
 
