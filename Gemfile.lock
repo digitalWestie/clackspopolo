@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:/digitalWestie/popolo-engine.git
-  revision: 8042ceaecdb643b7a2aebaa44195e222f9205fa6
+  revision: 5401c32a63013205c355ff2411406f904719c9f3
   specs:
     popolo (0.0.2)
       inherited_resources (~> 1.3.1)
