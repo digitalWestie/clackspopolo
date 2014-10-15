@@ -17,6 +17,7 @@ council = Popolo::Organization.create(name: 'Clackmannanshire Council', classifi
 labour = Popolo::Organization.create(name:'Labour Party', classification: 'Political Party')
 tories = Popolo::Organization.create(name:'Conservatives', classification: 'Political Party')
 nats   = Popolo::Organization.create(name:'SNP', classification: 'Political Party')
+libdems   = Popolo::Organization.create(name:'Liberal Democrats', classification: 'Political Party')
 greens = Popolo::Organization.create(name:'Green Party', classification: 'Political Party') # no greens...
 
 puts "Created #{Popolo::Organization.count} organizations"
