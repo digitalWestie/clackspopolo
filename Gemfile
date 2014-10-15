@@ -21,7 +21,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'popolo', :git => "git@github.com:/digitalWestie/popolo-engine.git"
+gem 'popolo', :github => "digitalWestie/popolo-engine"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

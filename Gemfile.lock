@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:/digitalWestie/popolo-engine.git
+  remote: git://github.com/digitalWestie/popolo-engine.git
   revision: 5401c32a63013205c355ff2411406f904719c9f3
   specs:
     popolo (0.0.2)
