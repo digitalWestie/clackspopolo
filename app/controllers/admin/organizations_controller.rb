@@ -1,5 +1,8 @@
 class Admin::OrganizationsController < ApplicationController
 
+  layout 'admin'
+  before_filter :authenticate_admin!
+
   def index
     @organizations = Popolo::Organization.all
     respond_to do |format|
