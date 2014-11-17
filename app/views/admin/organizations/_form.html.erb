@@ -1,0 +1,19 @@
+<div class = "row">
+<%= f.label :name %>
+<%= f.text_field :name %>
+</div>
+
+<div class = "row">
+<%= f.label :founding_date %>
+<%= f.date_select :founding_date, include_blank: true, start_year: 1970, class: 'form-control' %>
+</div>
+
+<div class = "row">
+<%= f.label :dissolution_date %>
+<%= f.date_select :dissolution_date, include_blank: true, start_year: 1990, class: 'form-control' %>
+</div>
+
+<div class = "row">
+<%= f.label :image, 'An image URL' %>
+<%= f.text_field :image %>
+</div>

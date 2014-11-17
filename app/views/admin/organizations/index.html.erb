@@ -1,0 +1,19 @@
+<h1>Organisation</h1>
+
+<table class = "table table-striped table-bordered table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Classfication</th>
+    <th>Memberships</th>
+    <th>Actions</th>
+  </tr>
+  <% for organization in @organizations %>
+    <tr>
+      <td><%= organization.name %></td>
+      <td><%= organization.classification %></td>
+      <td><%= organization.memberships.size %></td>
+      <td><%= link_to 'Edit', edit_admin_organization_path(organization), role: "button" %> |
+        <%= link_to 'Delete', admin_organization_path(organization), role: "button", method: :delete  %></td>
+    </tr>
+  <% end %>
+</table>

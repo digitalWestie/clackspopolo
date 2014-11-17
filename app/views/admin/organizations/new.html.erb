@@ -1,0 +1,8 @@
+<h1>New Organisation</h1>
+<%= form_for @organization, :html => { :class => "form-inline" } do |f| %>
+  <%= render 'shared/errors', :object => @organization %>
+  <%= render 'form', :f => f %>
+  <hr/>
+  <%= f.submit "Save", :class => "btn" %> |
+  <%= link_to 'Back to organisations', admin_organizations_path %>
+<% end %>

@@ -6,6 +6,10 @@ ClacksPopolo::Application.routes.draw do
 
   mount Popolo::Engine => '/'
 
+  namespace :admin, path: ENV['ADMIN_PATH'] || 'admin' do
+    resources :organizations
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
