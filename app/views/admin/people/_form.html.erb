@@ -1,0 +1,109 @@
+<div class = "row">
+<%= f.label :name %>
+<%= f.text_field :name %>
+</div>
+
+<div class = "row">
+<%= f.label :family_name, "Surname" %>
+<%= f.text_field :family_name %>
+</div>
+
+<div class = "row">
+<%= f.label :email %>
+<%= f.text_field :email %>
+</div>
+
+<div class = "row">
+<%= f.label :gender %>
+<%= f.text_field :gender %>
+</div>
+
+<div class = "row">
+<%= f.label :national_identity %>
+<%= f.text_field :national_identity %>
+</div>
+
+<div class = "row">
+<%= f.label :birth_date %>
+<%= f.date_select :birth_date, include_blank: true, start_year: 1900, class: 'form-control' %>
+</div>
+
+<div class = "row">
+<%= f.label :death_date %>
+<%= f.date_select :death_date, include_blank: true, start_year: 1950, class: 'form-control' %>
+</div>
+
+<div class = "row">
+<%= f.label :summary %>
+<%= f.text_area :summary %>
+</div>
+
+<div class = "row">
+<%= f.label :biography %>
+<%= f.text_area :biography %>
+</div>
+
+<div class = "row">
+<%= f.label :image, 'An image URL' %>
+<%= f.text_field :image %>
+</div>
+
+  <aside>
+    <% unless @person.contact_details.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::ContactDetail.model_name.human(count: @person.contact_details.size) %></h2>
+        </header>
+      </section>
+    <% end %>
+    <% unless @person.other_names.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::OtherName.model_name.human(count: @person.other_names.size) %></h2>
+        </header>
+
+
+      </section>
+    <% end %>
+    <% unless @person.identifiers.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::Identifier.model_name.human(count: @person.identifiers.size) %></h2>
+        </header>
+
+
+      </section>
+    <% end %>
+    <% unless @person.links.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::Link.model_name.human(count: @person.links.size) %></h2>
+        </header>
+
+
+      </section>
+    <% end %>
+    <% unless @person.sources.empty? %>
+      <section>
+        <header>
+          <h2><%=t 'popolo/source', count: @person.sources.size, scope: [:popolo]  %></h2>
+        </header>
+
+      </section>
+    <% end %>
+  </aside>
+
+  <aside>
+    <% unless @person.memberships.empty? %>
+      <section>
+        <header>
+          <h2>
+            <%= Popolo::Membership.model_name.human(count: @person.memberships.size) %>
+          </h2>
+        </header>
+
+
+      </section>
+    <% end %>
+  </aside>
+</section>
