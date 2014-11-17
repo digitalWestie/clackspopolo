@@ -16,6 +16,7 @@ class Admin::OrganizationsController < ApplicationController
 
   def create
     @organization = Popolo::Organization.new(organization_params)
+    binding.pry
     respond_to do |format|
       if @organization.save
         format.html do
@@ -70,6 +71,7 @@ class Admin::OrganizationsController < ApplicationController
     dissolution_date_str = dissolution_date_str.join('-')
 
     params[:organization].merge!("dissolution_date" => dissolution_date_str) unless dissolution_date_str.eql?('--')
+    params[:organization]
   end
 
 end
