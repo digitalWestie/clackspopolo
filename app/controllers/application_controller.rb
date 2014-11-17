@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
     end
   end
   protect_from_forgery
+
+  private
+
+  def handle_date_params(object_params, field_name)
+    built_str = [object_params.delete("#{field_name}(1i)")]
+    built_str << object_params.delete("#{field_name}(2i)")
+    built_str << object_params.delete("#{field_name}(3i)")
+    built_str = built_str.join('-')
+    object_params.merge!(field_name => built_str) unless built_str.eql?('--')
+    object_params
+  end
+
 end

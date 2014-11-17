@@ -52,19 +52,8 @@ class Admin::OrganizationsController < ApplicationController
   private
 
   def organization_params
-    founding_date_str = [params[:organization].delete("founding_date(1i)")]
-    founding_date_str << params[:organization].delete("founding_date(2i)")
-    founding_date_str << params[:organization].delete("founding_date(3i)")
-    founding_date_str = founding_date_str.join('-')
-    params[:organization].merge!("founding_date" => founding_date_str) unless founding_date_str.eql?('--')
-
-    dissolution_date_str = [params[:organization].delete("dissolution_date(1i)")]
-    dissolution_date_str << params[:organization].delete("dissolution_date(2i)")
-    dissolution_date_str << params[:organization].delete("dissolution_date(3i)")
-    dissolution_date_str = dissolution_date_str.join('-')
-
-    params[:organization].merge!("dissolution_date" => dissolution_date_str) unless dissolution_date_str.eql?('--')
-    params[:organization]
+    handle_date_params(params[:organization], "founding_date")
+    handle_date_params(params[:organization], "dissolution_date")
   end
 
 end
