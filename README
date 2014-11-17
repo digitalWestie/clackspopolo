@@ -12,3 +12,6 @@ https://github.com/opennorth/popolo-engine
 Build and manage Popolo-compliant JSON for the Finnish Parliament
 https://github.com/tmtmtmtm/eduskunta-popolo
 
+== Notes
+
+NB. the allow_dynamic_fields option in mongoid.yml has been set from the default, true to false
