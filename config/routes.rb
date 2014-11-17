@@ -1,5 +1,9 @@
 ClacksPopolo::Application.routes.draw do
 
+  get "people/new"
+
+  get "people/edit"
+
   devise_for :admins
 
   root to: 'home#index'
