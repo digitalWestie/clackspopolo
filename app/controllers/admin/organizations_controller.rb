@@ -13,7 +13,6 @@ class Admin::OrganizationsController < ApplicationController
 
   def create
     @organization = Popolo::Organization.new(organization_params)
-    binding.pry
     respond_to do |format|
       if @organization.save
         format.html do
