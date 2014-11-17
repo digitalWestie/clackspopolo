@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/digitalWestie/popolo-engine.git
-  revision: 6686523d743b78feb31fc131b839f92d83758c93
+  revision: a096f63c168e60350fc06599383ccb59c38acd67
   specs:
     popolo (0.0.2)
       inherited_resources (~> 1.3.1)
@@ -44,6 +44,7 @@ GEM
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
     builder (3.0.4)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -73,6 +74,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mongoid (3.1.6)
       activemodel (~> 3.2)
@@ -86,6 +88,10 @@ GEM
     origin (1.1.0)
     orm_adapter (0.5.0)
     polyglot (0.3.5)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -118,6 +124,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    slop (3.6.0)
     sprockets (2.2.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -146,6 +153,7 @@ DEPENDENCIES
   devise
   jquery-rails
   popolo!
+  pry
   rails (= 3.2.19)
   sass-rails
   turn (~> 0.8.3)
