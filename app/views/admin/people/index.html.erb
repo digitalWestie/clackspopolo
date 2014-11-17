@@ -1,0 +1,27 @@
+<h1>People</h1>
+
+<table class = "table table-striped table-bordered table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Summary</th>
+    <th>Memberships</th>
+    <th>Actions</th>
+  </tr>
+  <% for person in @people %>
+    <tr>
+      <td><%= person.name %></td>
+      <td><%= person.summary %></td>
+      <td>
+        <% person.memberships.each do |membership| %>
+          <%= link_to membership.to_s(format: :organization), popolo.membership_path(membership) %>
+        <% end %>
+      </td>
+
+      <td><%= link_to 'Edit', edit_admin_person_path(person), role: "button" %> |
+        <%= link_to 'Delete', admin_person_path(person), role: "button", method: :delete  %></td>
+    </tr>
+  <% end %>
+</table>
+<hr/>
+
+<%= link_to 'New person', new_admin_person_path %>
