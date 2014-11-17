@@ -1,9 +1,5 @@
 ClacksPopolo::Application.routes.draw do
 
-  get "people/new"
-
-  get "people/edit"
-
   devise_for :admins
 
   root to: 'home#index'
@@ -12,6 +8,7 @@ ClacksPopolo::Application.routes.draw do
 
   namespace :admin, path: ENV['ADMIN_PATH'] || 'admin' do
     resources :organizations
+    resources :people
   end
 
   # The priority is based upon order of creation:
