@@ -5,16 +5,10 @@ class Admin::OrganizationsController < ApplicationController
 
   def index
     @organizations = Popolo::Organization.all
-    respond_to do |format|
-      format.html
-    end
   end
 
   def new
     @organization = Popolo::Organization.new
-    respond_to do |format|
-      format.html
-    end
   end
 
   def create
@@ -33,9 +27,6 @@ class Admin::OrganizationsController < ApplicationController
 
   def edit
     @organization = Popolo::Organization.find(params[:id])
-    respond_to do |format|
-      format.html
-    end
   end
 
   def update
