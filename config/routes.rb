@@ -1,4 +1,6 @@
 ClacksPopolo::Application.routes.draw do
+  devise_for :admins
+
   mount Popolo::Engine => '/'
 
   # The priority is based upon order of creation:
