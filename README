@@ -4,3 +4,11 @@ When database locks up try:
 
 `sudo rm /var/lib/mongodb/mongod.lock`
 
+== Relevant repos
+
+Popolo engine
+https://github.com/opennorth/popolo-engine
+
+Build and manage Popolo-compliant JSON for the Finnish Parliament
+https://github.com/tmtmtmtm/eduskunta-popolo
+
