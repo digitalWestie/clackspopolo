@@ -26,66 +26,66 @@ councillors = []
 
 #Clackmannanshire Central
 
-councillors << Popolo::Person.create(name: 'Derek', family_name:'Stewart')# , Labour
+councillors << Popolo::Person.create(given_name: 'Derek', family_name:'Stewart')# , Labour
 labour.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Gary', family_name:'Womersley') #, Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Gary', family_name:'Womersley') #, Scottish National Party
 nats.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Graham', family_name:'Watt') #, Labour
+councillors << Popolo::Person.create(given_name: 'Graham', family_name:'Watt') #, Labour
 labour.memberships.create(person:councillors.last)
 
 #Clackmannanshire East
 
-councillors << Popolo::Person.create(name: 'Alastair', family_name:'Campbell') #, Conservative
+councillors << Popolo::Person.create(given_name: 'Alastair', family_name:'Campbell') #, Conservative
 tories.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Irene', family_name:'Hamilton') #, Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Irene', family_name:'Hamilton') #, Scottish National Party
 nats.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Kathleen', family_name:'Martin') #, Labour
+councillors << Popolo::Person.create(given_name: 'Kathleen', family_name:'Martin') #, Labour
 labour.memberships.create(person:councillors.last)
 
 #Clackmannanshire North
 
-councillors << Popolo::Person.create(name: 'Archie', family_name:'Drummond')# , Independent
+councillors << Popolo::Person.create(given_name: 'Archie', family_name:'Drummond')# , Independent
 #what to do with independents? Guess they aren't a member of any org?
 
-councillors << Popolo::Person.create(name: 'Donald W.', family_name:'Balsillie')# , Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Donald W.', family_name:'Balsillie')# , Scottish National Party
 nats.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Robert', family_name:'McGill')# , Labour
+councillors << Popolo::Person.create(given_name: 'Robert', family_name:'McGill')# , Labour
 labour.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Walter', family_name:'McAdam')#  MBE, Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Walter', family_name:'McAdam')#  MBE, Scottish National Party
 nats.memberships.create(person:councillors.last)
 
 #Clackmannanshire South
 
-councillors << Popolo::Person.create(name: 'Craig', family_name:'Holden')# , Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Craig', family_name:'Holden')# , Scottish National Party
 nats.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Ellen', family_name:'Forson')# , Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Ellen', family_name:'Forson')# , Scottish National Party
 nats.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Janet', family_name:'Cadenhead')# , Labour
+councillors << Popolo::Person.create(given_name: 'Janet', family_name:'Cadenhead')# , Labour
 labour.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Kenneth', family_name:'Earle')# , Labour
+councillors << Popolo::Person.create(given_name: 'Kenneth', family_name:'Earle')# , Labour
 labour.memberships.create(person:councillors.last)
 
 #Clackmannanshire West
 
-councillors << Popolo::Person.create(name: 'George', family_name:'Matchett')#  Q.P.M., Labour
+councillors << Popolo::Person.create(given_name: 'George', family_name:'Matchett')#  Q.P.M., Labour
 labour.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Jim', family_name:'Stalker')# , Labour
+councillors << Popolo::Person.create(given_name: 'Jim', family_name:'Stalker')# , Labour
 labour.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Les', family_name:'Sharp')# , Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Les', family_name:'Sharp')# , Scottish National Party
 nats.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(name: 'Tina', family_name:'Murphy')# , Scottish National Party
+councillors << Popolo::Person.create(given_name: 'Tina', family_name:'Murphy')# , Scottish National Party
 nats.memberships.create(person:councillors.last)
 
 puts "Created #{Popolo::Person.count} people"
