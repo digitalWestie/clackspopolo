@@ -3,6 +3,8 @@
 When database locks up try:
 
 `sudo rm /var/lib/mongodb/mongod.lock`
+`sudo service mongodb stop`
+`sudo service mongodb start`
 
 == Relevant repos
 
