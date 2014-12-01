@@ -9,7 +9,7 @@
   </tr>
   <% for person in @people %>
     <tr>
-      <td><%= person.name %></td>
+      <td><%= person.to_s %></td>
       <td><%= person.summary %></td>
       <td>
         <% person.memberships.each do |membership| %>
