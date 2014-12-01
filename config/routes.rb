@@ -7,7 +7,9 @@ ClacksPopolo::Application.routes.draw do
   mount Popolo::Engine => '/'
 
   namespace :admin, path: ENV['ADMIN_PATH'] || 'admin' do
-    resources :organizations
+    resources :organizations do
+      resources :posts, only: [:create, :new, :edit, :update, :destroy]
+    end
     resources :people
   end
 

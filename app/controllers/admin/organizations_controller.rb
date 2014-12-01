@@ -11,6 +11,10 @@ class Admin::OrganizationsController < ApplicationController
     @organization = Popolo::Organization.new
   end
 
+  def show
+    @organization = Popolo::Organization.find(params[:id])
+  end
+
   def create
     @organization = Popolo::Organization.new(organization_params)
     respond_to do |format|
