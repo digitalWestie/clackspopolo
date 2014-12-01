@@ -2,6 +2,17 @@
 <%= form_for @organization, url: admin_organization_path(@organization), :html => { :class => "form-inline" } do |f| %>
   <%= render 'shared/errors', :object => @organization %>
   <%= render 'form', :f => f %>
+
+  <%= field_set_tag 'Links' do %>
+    <%# f.object.links.build %>
+    <% f.fields_for :links do |lf| %>
+      <%= lf.label :url %>
+      <%= lf.text_field :url %>
+      <%= lf.label :note, :title => "e.g. Wikipedia page on the organization" %>
+      <%= lf.text_field :note %>
+    <% end %>
+  <% end %>
+
   <hr/>
   <%= f.submit "Save", :class => "btn" %> |
   <%= link_to 'Back to organisations', admin_organizations_path %>

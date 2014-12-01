@@ -1,0 +1,2 @@
+#Include Extensions
+Popolo::Organization.include OrganizationExtensions
