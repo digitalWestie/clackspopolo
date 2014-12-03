@@ -10,7 +10,10 @@ ClacksPopolo::Application.routes.draw do
     resources :organizations do
       resources :posts, only: [:create, :new, :edit, :update, :destroy]
     end
-    resources :people
+
+    resources :people do
+      resources :memberships, only: [:create, :new, :edit, :update, :destroy]
+    end
   end
 
   # The priority is based upon order of creation:
