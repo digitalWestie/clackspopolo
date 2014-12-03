@@ -107,3 +107,25 @@
     <% end %>
   </aside>
 </section>
+
+
+<%= field_set_tag 'Sources' do %>
+  <p>What sources were referenced in order to create this record?</p>
+  <% f.fields_for :sources do |sf| %>
+    <%= render 'admin/shared/linkable_fields', f: sf %>
+  <% end %>
+<% end %>
+
+<%= field_set_tag 'Links' do %>
+  <p>Links to anything else about this person.</p>
+  <% f.fields_for :links do |lf| %>
+    <%= render 'admin/shared/linkable_fields', f: lf %>
+  <% end %>
+<% end %>
+
+<%= field_set_tag 'Contacts Details' do %>
+  <p>How can you contact this person?</p>
+  <% f.fields_for :contact_details do |cf| %>
+    <%= render 'admin/shared/contact_details_fields', f: cf %>
+  <% end %>
+<% end %>
