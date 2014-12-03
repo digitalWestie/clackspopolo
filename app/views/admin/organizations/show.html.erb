@@ -1,1 +1,143 @@
-<h1>MY ORG</h1>
+<section>
+  <header class="page-header">
+    <div class="media">
+      <div class="pull-left">
+        <% if @organization.image %>
+          <div class="media-object popolo-circle" style="background-image: url(<%= @organization.image %>)">
+          </div>
+        <% end %>
+      </div>
+      <div class="media-body">
+        <h1 class="media-heading">
+          <%= @organization %>
+          <span class = "reduced-font" style = "margin-left:1em;">
+            <%= link_to 'Edit', edit_admin_organization_path(@organization) %> |
+            <%= link_to 'Remove', admin_organization_path(@organization), data: { confirm: "Are you sure?" }, method: :delete %>
+          </span>
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <dl>
+    <% if @organization.classification? %>
+      <dt><%= Popolo::Organization.human_attribute_name(:classification) %></dt>
+      <dd><%=t @organization.classification, count: 1, scope: [:popolo, :organizations, :classifications], default: @organization.classification %></dd>
+    <% end %>
+    <% if @organization.founding_date? %>
+      <dt><%= Popolo::Organization.human_attribute_name(:founding_date) %></dt>
+      <dd><%=l @organization.founding_date %></dd>
+    <% end %>
+    <% if @organization.dissolution_date? %>
+      <dt><%= Popolo::Organization.human_attribute_name(:dissolution_date) %></dt>
+      <dd><%=l @organization.dissolution_date %></dd>
+    <% end %>
+  </dl>
+
+  <aside>
+    <% unless @organization.contact_details.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::ContactDetail.model_name.human(count: @organization.contact_details.size) %></h2>
+        </header>
+        <dl class="dl-horizontal">
+          <%= render @organization.contact_details %>
+        </dl>
+      </section>
+    <% end %>
+    <% unless @organization.other_names.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::OtherName.model_name.human(count: @organization.other_names.size) %></h2>
+        </header>
+        <ul>
+          <%= render @organization.other_names %>
+        </ul>
+      </section>
+    <% end %>
+    <% unless @organization.identifiers.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::Identifier.model_name.human(count: @organization.identifiers.size) %></h2>
+        </header>
+        <dl class="dl-horizontal">
+          <%= render @organization.identifiers %>
+        </dl>
+      </section>
+    <% end %>
+    <% unless @organization.links.empty? %>
+      <section>
+        <header>
+          <h2><%= Popolo::Link.model_name.human(count: @organization.links.size) %></h2>
+        </header>
+        <ul>
+          <%= render partial: '/popolo/links/link', collection: @organization.links %>
+        </ul>
+      </section>
+    <% end %>
+    <% unless @organization.sources.empty? %>
+      <section>
+        <header>
+          <h2><%=t 'popolo/source', count: @organization.sources.size, scope: [:popolo]  %></h2>
+        </header>
+        <ul>
+          <%= render @organization.sources %>
+        </ul>
+      </section>
+    <% end %>
+  </aside>
+
+  <aside>
+    <% unless @organization.memberships.empty? %>
+      <section>
+        <header>
+          <h2>
+            <%= Popolo::Membership.model_name.human(count: @organization.memberships.size) %>
+          </h2>
+        </header>
+        <ol>
+          <% @organization.memberships.each do |membership| %>
+            <li>
+              <%= membership.to_s(format: :person) %>
+              <%= "(#{membership.post})" if membership.post %>
+            </li>
+          <% end %>
+        </ol>
+      </section>
+    <% end %>
+    <% unless @organization.posts.empty? %>
+      <section>
+        <header>
+          <h2>
+            Posts
+          </h2>
+        </header>
+        <ol>
+          <% @organization.posts.each do |post| %>
+            <li>
+              <%= link_to post, edit_admin_organization_post_path(@organization, post) %>
+              <%= link_to "Remove", admin_organization_post_path(@organization, post), method: :delete %>
+            </li>
+          <% end %>
+        </ol>
+        <%= link_to 'Add post', new_admin_organization_post_path(@organization) %>
+      </section>
+    <% end %>
+    <% unless @organization.children.empty? %>
+      <section>
+        <header>
+          <h2>
+            <%= Popolo::Organization.model_name.human(count: @organization.children.size) %>
+          </h2>
+        </header>
+        <ol>
+          <% @organization.children.each do |organization| %>
+            <li>
+              <%= link_to organization, admin_organization_path(organization) %>
+            </li>
+          <% end %>
+        </ol>
+      </section>
+    <% end %>
+  </aside>
+</section>

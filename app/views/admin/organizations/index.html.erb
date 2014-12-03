@@ -9,7 +9,7 @@
   </tr>
   <% for organization in @organizations %>
     <tr>
-      <td><%= organization %></td>
+      <td><%= link_to organization, admin_organization_path(organization) %></td>
       <td><%= organization.memberships.size %></td>
       <td><%= organization.posts.join(', ') %></td>
       <td><%= link_to 'Edit', edit_admin_organization_path(organization), role: "button" %> |
