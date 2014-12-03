@@ -1,0 +1,51 @@
+<div class = "row">
+  <%= f.label :label,
+    title: "A label describing the post e.g. 'Councillor at Clackmannanshire Council'" %>
+  <%= f.text_field :label %>
+</div>
+
+<div class = "row">
+  <%= f.label :role, title: "The function that the holder of the post fulfills, e.g. 'Councillor'" %>
+  <%= f.text_field :role %>
+</div>
+
+<div class = "row">
+  <%= f.label :start_date, "Date of creation" %>
+  <p>The date the post was established.</p>
+  <p>
+  <%= select_day_with_blank_tag "post[start_date(3i)]", selected: f.object.start_date %>
+  <%= select_month_with_blank_tag "post[start_date(2i)]", selected: f.object.start_date %>
+  <%= text_field_tag "post[start_date(1i)]", f.object.start_date.try(:year), placeholder: "Year e.g. 1984", style: "width:6.9em;" %>
+  </p>
+</div>
+
+<div class = "row">
+  <%= f.label :end_date, "Date of elimination" %>
+  <p>The date the post was eliminated. Leave blank if still in operation.</p>
+  <p>
+  <%= select_day_with_blank_tag "post[end_date(3i)]", selected: f.object.end_date %>
+  <%= select_month_with_blank_tag "post[end_date(2i)]", selected: f.object.end_date %>
+  <%= text_field_tag "post[end_date(1i)]", f.object.end_date.try(:year), placeholder: "Year e.g. 1984", style: "width:6.9em;" %>
+  </p>
+</div>
+
+<%= field_set_tag 'Sources' do %>
+  <p>What sources were referenced in order to create this post?</p>
+  <% f.fields_for :sources do |sf| %>
+    <%= render 'admin/shared/linkable_fields', f: sf %>
+  <% end %>
+<% end %>
+
+<%= field_set_tag 'Links' do %>
+  <p>Links to anything else about this post.</p>
+  <% f.fields_for :links do |lf| %>
+    <%= render 'admin/shared/linkable_fields', f: lf %>
+  <% end %>
+<% end %>
+
+<%= field_set_tag 'Contacts Details' do %>
+  <p>How can you contact the holder of this post?</p>
+  <% f.fields_for :contact_details do |cf| %>
+    <%= render 'admin/shared/contact_details_fields', f: cf %>
+  <% end %>
+<% end %>

@@ -1,2 +1,11 @@
-<h1>Admin::Posts#new</h1>
-<p>Find me in app/views/admin/posts/new.html.erb</p>
+<h1>New Post</h1>
+<%= form_for @post, url: admin_organization_posts_path(@organization), :html => { :class => "form-inline" } do |f| %>
+
+  <%= render 'shared/errors', :object => @post %>
+  <%= render 'form', :f => f %>
+
+  <hr/>
+
+  <%= f.submit "Save", :class => "btn" %> |
+  <%= link_to 'Back', admin_organization_path(@organization) %>
+<% end %>
