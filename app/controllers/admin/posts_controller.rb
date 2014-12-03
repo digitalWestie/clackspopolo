@@ -50,4 +50,11 @@ class Admin::PostsController < ApplicationController
     end
   end
 
+  private
+
+  def organization_params
+    handle_date_params(params[:organization], "founding_date")
+    handle_date_params(params[:organization], "dissolution_date")
+  end
+
 end
