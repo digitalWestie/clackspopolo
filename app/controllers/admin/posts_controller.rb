@@ -36,7 +36,6 @@ class Admin::PostsController < ApplicationController
           redirect_to admin_organization_path(@organization), notice: 'Post was successfully updated.'
         end
       else
-        binding.pry
         format.html { render :edit }
       end
     end
