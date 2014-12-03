@@ -42,8 +42,8 @@ class Admin::PostsController < ApplicationController
   end
 
   def destroy
-    organization = Popolo::Organization.find(params[:organization_id])
-    @post = organization.posts.find(params[:id])
+    @organization = Popolo::Organization.find(params[:organization_id])
+    @post = @organization.posts.find(params[:id])
     @post.destroy
     respond_to do |format|
       format.html { redirect_to admin_organization_path(@organization) }
