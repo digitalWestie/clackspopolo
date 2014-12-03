@@ -9,12 +9,12 @@ class Admin::PostsController < ApplicationController
   end
 
   def create
-    organization = Popolo::Organization.find(params[:organization_id])
-    @post = organization.posts.build(params[:post])
+    @organization = Popolo::Organization.find(params[:organization_id])
+    @post = @organization.posts.build(post_params)
     respond_to do |format|
       if @post.save
         format.html do
-          redirect_to admin_organization_url(organization), notice: 'Post was successfully created.'
+          redirect_to admin_organization_url(@organization), notice: 'Post was successfully created.'
         end
       else
         format.html { render :new }
@@ -24,18 +24,19 @@ class Admin::PostsController < ApplicationController
 
   def edit
     @organization = Popolo::Organization.find(params[:organization_id])
-    @post = @organization.posts.find(params[:post_id])
+    @post = @organization.posts.find(params[:id])
   end
 
   def update
-    organization = Popolo::Organization.find(params[:organization_id])
-    @post = organization.posts.find(params[:id])
+    @organization = Popolo::Organization.find(params[:organization_id])
+    @post = @organization.posts.find(params[:id])
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if @post.update_attributes(post_params)
         format.html do
-          redirect_to admin_organization_url(organization), notice: 'Post was successfully updated.'
+          redirect_to admin_organization_path(@organization), notice: 'Post was successfully updated.'
         end
       else
+        binding.pry
         format.html { render :edit }
       end
     end
@@ -52,9 +53,9 @@ class Admin::PostsController < ApplicationController
 
   private
 
-  def organization_params
-    handle_date_params(params[:organization], "founding_date")
-    handle_date_params(params[:organization], "dissolution_date")
+  def post_params
+    handle_date_params(params[:post], "start_date")
+    handle_date_params(params[:post], "end_date")
   end
 
 end

@@ -16,11 +16,12 @@ module ApplicationHelper
 
   def select_month_with_blank_tag(name, options={})
     months = Date::MONTHNAMES.dup
-    months[0] = ""
+    months = months.each_with_index.map { |m,i| [m, i] }
+    months[0] = ["",""]
 
     if options[:selected].present?
       selected = options.delete(:selected)
-      selected = selected.class.eql?(String) ? selected : months[selected.month]
+      selected = selected.class.eql?(String) ? selected : selected.month
     else
       selected = nil
     end
