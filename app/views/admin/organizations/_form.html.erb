@@ -17,3 +17,21 @@
 <%= f.label :image, 'An image URL' %>
 <%= f.text_field :image %>
 </div>
+
+<%= field_set_tag 'Links' do %>
+  <% f.fields_for :links do |lf| %>
+    <%= render 'admin/shared/linkable_fields', f: lf %>
+  <% end %>
+<% end %>
+
+<%= field_set_tag 'Sources' do %>
+  <% f.fields_for :sources do |sf| %>
+    <%= render 'admin/shared/linkable_fields', f: sf %>
+  <% end %>
+<% end %>
+
+<%= field_set_tag 'Contacts Details' do %>
+  <% f.fields_for :contact_details do |cf| %>
+    <%= render 'admin/shared/contact_details_fields', f: cf %>
+  <% end %>
+<% end %>

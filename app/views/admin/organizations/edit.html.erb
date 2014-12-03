@@ -2,25 +2,6 @@
 <%= form_for @organization, url: admin_organization_path(@organization), :html => { :class => "form-inline" } do |f| %>
   <%= render 'shared/errors', :object => @organization %>
   <%= render 'form', :f => f %>
-
-  <%= field_set_tag 'Links' do %>
-    <% f.fields_for :links do |lf| %>
-      <%= render 'admin/shared/linkable_fields', f: lf %>
-    <% end %>
-  <% end %>
-
-  <%= field_set_tag 'Sources' do %>
-    <% f.fields_for :sources do |sf| %>
-      <%= render 'admin/shared/linkable_fields', f: sf %>
-    <% end %>
-  <% end %>
-
-  <%= field_set_tag 'Contacts Details' do %>
-    <% f.fields_for :contact_details do |cf| %>
-      <%= render 'admin/shared/contact_details_fields', f: cf %>
-    <% end %>
-  <% end %>
-
   <hr/>
 
   <%= f.submit "Save", :class => "btn" %> |
