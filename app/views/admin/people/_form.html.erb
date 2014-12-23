@@ -48,71 +48,10 @@
 <%= f.text_field :image %>
 </div>
 
-  <aside>
-    <% unless @person.contact_details.empty? %>
-      <section>
-        <header>
-          <h2><%= Popolo::ContactDetail.model_name.human(count: @person.contact_details.size) %></h2>
-        </header>
-      </section>
-    <% end %>
-    <% unless @person.other_names.empty? %>
-      <section>
-        <header>
-          <h2><%= Popolo::OtherName.model_name.human(count: @person.other_names.size) %></h2>
-        </header>
-
-
-      </section>
-    <% end %>
-    <% unless @person.identifiers.empty? %>
-      <section>
-        <header>
-          <h2><%= Popolo::Identifier.model_name.human(count: @person.identifiers.size) %></h2>
-        </header>
-
-
-      </section>
-    <% end %>
-    <% unless @person.links.empty? %>
-      <section>
-        <header>
-          <h2><%= Popolo::Link.model_name.human(count: @person.links.size) %></h2>
-        </header>
-
-
-      </section>
-    <% end %>
-    <% unless @person.sources.empty? %>
-      <section>
-        <header>
-          <h2><%=t 'popolo/source', count: @person.sources.size, scope: [:popolo]  %></h2>
-        </header>
-
-      </section>
-    <% end %>
-  </aside>
-
-  <aside>
-    <% unless @person.memberships.empty? %>
-      <section>
-        <header>
-          <h2>
-            <%= Popolo::Membership.model_name.human(count: @person.memberships.size) %>
-          </h2>
-        </header>
-
-
-      </section>
-    <% end %>
-  </aside>
-</section>
-
-
-<%= field_set_tag 'Sources' do %>
-  <p>What sources were referenced in order to create this record?</p>
-  <% f.fields_for :sources do |sf| %>
-    <%= render 'admin/shared/linkable_fields', f: sf %>
+<%= field_set_tag 'Contacts Details' do %>
+  <p>How can you contact this person?</p>
+  <% f.fields_for :contact_details do |cf| %>
+    <%= render 'admin/shared/contact_details_fields', f: cf %>
   <% end %>
 <% end %>
 
@@ -123,9 +62,25 @@
   <% end %>
 <% end %>
 
-<%= field_set_tag 'Contacts Details' do %>
-  <p>How can you contact this person?</p>
-  <% f.fields_for :contact_details do |cf| %>
-    <%= render 'admin/shared/contact_details_fields', f: cf %>
+<%= field_set_tag 'Sources' do %>
+  <p>What sources were referenced in order to create this record?</p>
+  <% f.fields_for :sources do |sf| %>
+    <%= render 'admin/shared/linkable_fields', f: sf %>
   <% end %>
+<% end %>
+
+<% unless @person.other_names.empty? %>
+  <section>
+    <header>
+      <h2><%= Popolo::OtherName.model_name.human(count: @person.other_names.size) %></h2>
+    </header>
+  </section>
+<% end %>
+
+<% unless @person.identifiers.empty? %>
+  <section>
+    <header>
+      <h2><%= Popolo::Identifier.model_name.human(count: @person.identifiers.size) %></h2>
+    </header>
+  </section>
 <% end %>
