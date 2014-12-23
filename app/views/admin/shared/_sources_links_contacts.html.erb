@@ -1,12 +1,12 @@
 <%= field_set_tag 'Sources' do %>
-  <%= content_tag :p, "What sources were referenced in order to create this #{sf.object.model_name.human}?" %>
+  <%= content_tag :p, "What sources were referenced in order to create this #{f.object.model_name.human}?" %>
   <% f.fields_for :sources do |sf| %>
     <%= render 'admin/shared/linkable_fields', f: sf %>
   <% end %>
 <% end %>
 
 <%= field_set_tag 'Links' do %>
-  <%= content_tag :p, "Links to anything else about this #{sf.object.model_name.human}?" %>
+  <%= content_tag :p, "Links to anything else about this #{f.object.model_name.human}?" %>
   <p>post.</p>
   <% f.fields_for :links do |lf| %>
     <%= render 'admin/shared/linkable_fields', f: lf %>
@@ -14,7 +14,7 @@
 <% end %>
 
 <%= field_set_tag 'Contacts Details' do %>
-  <%= content_tag :p, "How can you contact the holder of this #{sf.object.model_name.human}?" %>
+  <%= content_tag :p, "How can you contact the holder of this #{f.object.model_name.human}?" %>
   <% f.fields_for :contact_details do |cf| %>
     <%= render 'admin/shared/contact_details_fields', f: cf %>
   <% end %>

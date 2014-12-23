@@ -1,0 +1,43 @@
+<%= f.hidden_field :person_id %>
+
+<div class = "row">
+  <%= f.label :organization_id, "Organisation" %>
+  <%= f.text_field :organization_id %>
+</div>
+
+<div class = "row">
+  <%= f.label :post_id, "Post" %>
+  <%= f.text_field :post_id %>
+</div>
+
+<div class = "row">
+  <%= f.label :label %>
+  <%= f.text_field :label %>
+</div>
+
+<div class = "row">
+  <%= f.label :role %>
+  <%= f.text_field :role %>
+</div>
+
+<div class = "row">
+  <%= f.label :start_date, "Date of membership started" %>
+  <p>The date the membership started.</p>
+  <p>
+  <%= select_day_with_blank_tag "membership[start_date(3i)]", selected: f.object.start_date %>
+  <%= select_month_with_blank_tag "membership[start_date(2i)]", selected: f.object.start_date %>
+  <%= text_field_tag "membership[start_date(1i)]", f.object.start_date.try(:year), placeholder: "Year e.g. 1984", style: "width:6.9em;" %>
+  </p>
+</div>
+
+<div class = "row">
+  <%= f.label :end_date, "Date of membership ended" %>
+  <p>The date the membership ended. Leave blank if person is still a member.</p>
+  <p>
+  <%= select_day_with_blank_tag "membership[end_date(3i)]", selected: f.object.end_date %>
+  <%= select_month_with_blank_tag "membership[end_date(2i)]", selected: f.object.end_date %>
+  <%= text_field_tag "membership[end_date(1i)]", f.object.end_date.try(:year), placeholder: "Year e.g. 1984", style: "width:6.9em;" %>
+  </p>
+</div>
+
+<%= render 'admin/shared/sources_links_contacts', f: f %>
