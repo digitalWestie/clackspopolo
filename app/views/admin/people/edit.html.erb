@@ -12,7 +12,7 @@
 <h3>Memberships</h3>
 <ul>
 <% for membership in @person.memberships %>
-  <li><%= link_to membership, edit_admin_person_membership_path(@person, membership) %> | <%= link_to "Delete", admin_person_membership_path(@person, membership) %></li>
+  <li><%= link_to membership, edit_admin_person_membership_path(@person, membership) %> | <%= link_to "Delete", admin_person_membership_path(@person, membership), method: :delete, data: { confirm: "Are you sure?" } %></li>
 <% end %>
 </ul>
 
