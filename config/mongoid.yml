@@ -31,7 +31,6 @@ development:
   options:
     # Configuration for whether or not to allow access to fields that do
     # not have a field definition on the model. (default: true)
-    allow_dynamic_fields: false
 
     # Enable the identity map, needed for eager loading. (default: false)
     # identity_map_enabled: false
@@ -79,7 +78,6 @@ test:
         max_retries: 1
         retry_interval: 0
   options:
-    allow_dynamic_fields: false
 
 production:
   sessions:
@@ -89,4 +87,3 @@ production:
         skip_version_check: true
         safe: true
   options:
-    allow_dynamic_fields: false
