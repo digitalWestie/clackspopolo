@@ -1,7 +1,4 @@
-class Admin::PeopleController < ApplicationController
-
-  layout 'admin'
-  before_filter :authenticate_admin!
+class Admin::PeopleController < Admin::AdminController
 
   def index
     @people = Popolo::Person.all

@@ -1,7 +1,4 @@
-class Admin::PostsController < ApplicationController
-
-  layout 'admin'
-  before_filter :authenticate_admin!
+class Admin::PostsController < Admin::AdminController
 
   def new
     @organization = Popolo::Organization.find(params[:organization_id])
