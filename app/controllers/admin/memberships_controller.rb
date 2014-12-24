@@ -9,7 +9,7 @@ class Admin::MembershipsController < Admin::AdminController
   end
 
   def create
-    @membership = @organization.memberships.build(params[:membership])
+    @membership = @organization.memberships.build(membership_params)
     if @membership.save
       redirect_to admin_organization_path(@organization), notice: "Membership saved"
     else
@@ -24,6 +24,12 @@ class Admin::MembershipsController < Admin::AdminController
 
   def update
     @membership = @organization.memberships.find(params[:id])
+    if @membership.update(membership_params)
+      redirect_to admin_organization_path(@organization), notice: "Membership updated"
+    else
+      @posts = @organization.posts.pluck(:label, :id)
+      render :edit
+    end
   end
 
   def destroy
@@ -36,6 +42,14 @@ class Admin::MembershipsController < Admin::AdminController
 
   def set_organization
     @organization = Popolo::Organization.includes(:memberships).find(params[:organization_id])
+  end
+
+  def membership_params
+    handle_date_params(params[:membership], "start_date")
+    handle_date_params(params[:membership], "end_date")
+    params.require(:membership).permit(:label, :role, :post_id, :person_id, :organization_id,
+      :start_date, :end_date, sources: [:url, :note], links: [:url, :note],
+      contact_details: [:label, :type, :value, :note])
   end
 
 end
