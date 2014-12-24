@@ -27,9 +27,9 @@ class Admin::MembershipsController < Admin::AdminController
   end
 
   def destroy
-    @membership = @organization.memberships.find(params[:id])
+    membership = @organization.memberships.find(params[:id])
     membership.destroy
-    redirect_to admin_organization_path(params[:organization_id])
+    redirect_to admin_organization_path(@organization)
   end
 
   private
