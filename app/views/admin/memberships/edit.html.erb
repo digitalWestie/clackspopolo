@@ -1,2 +1,10 @@
-<h1>Admin::Memberships#edit</h1>
-<p>Find me in app/views/admin/memberships/edit.html.erb</p>
+<h1>Edit Membership</h1>
+
+<%= form_for @membership, url: admin_organization_membership_path(@organization, @membership), :html => { :class => "form-inline" } do |f| %>
+  <%= render 'shared/errors', :object => @membership %>
+  <%= f.hidden_field :person_id %>
+  <%= render 'form', :f => f %>
+  <hr/>
+  <%= f.submit "Save", :class => "btn" %> |
+  <%= link_to 'Back to organisation', admin_organization_path(@organization) %>
+<% end %>

@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   namespace :admin, path: ENV['ADMIN_PATH'] || 'admin' do
     resources :organizations do
       resources :posts, only: [:create, :new, :edit, :update, :destroy]
+      resources :memberships, only: [:create, :new, :edit, :update, :destroy]
     end
 
     resources :people do
-      resources :memberships, only: [:create, :new, :edit, :update, :destroy]
     end
   end
 

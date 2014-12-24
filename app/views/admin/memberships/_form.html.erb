@@ -1,13 +1,8 @@
-<%= f.hidden_field :person_id %>
-
-<div class = "row">
-  <%= f.label :organization_id, "Organisation" %>
-  <%= f.text_field :organization_id %>
-</div>
+<%= f.hidden_field :organization_id %>
 
 <div class = "row">
   <%= f.label :post_id, "Post" %>
-  <%= f.text_field :post_id %>
+  <%= f.select(:post_id, @posts, include_blank: true) %>
 </div>
 
 <div class = "row">

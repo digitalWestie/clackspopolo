@@ -6,14 +6,3 @@
   <%= f.submit "Save", :class => "btn" %> |
   <%= link_to 'Back to people', admin_people_path %>
 <% end %>
-
-<hr/>
-
-<h3>Memberships</h3>
-<ul>
-<% for membership in @person.memberships %>
-  <li><%= link_to membership, edit_admin_person_membership_path(@person, membership) %> | <%= link_to "Delete", admin_person_membership_path(@person, membership), method: :delete, data: { confirm: "Are you sure?" } %></li>
-<% end %>
-</ul>
-
-<%= link_to 'Add membership', new_admin_person_membership_path(@person)  %>

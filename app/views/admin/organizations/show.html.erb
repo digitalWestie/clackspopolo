@@ -88,23 +88,24 @@
   </aside>
 
   <aside>
-    <% unless @organization.memberships.empty? %>
-      <section>
-        <header>
-          <h2>
-            <%= Popolo::Membership.model_name.human(count: @organization.memberships.size) %>
-          </h2>
-        </header>
+    <section>
+      <header>
+        <h2><%= Popolo::Membership.model_name.human(count: @organization.memberships.size) %></h2>
+      </header>
+      <% unless @organization.memberships.empty? %>
         <ol>
           <% @organization.memberships.each do |membership| %>
             <li>
               <%= membership.to_s(format: :person) %>
               <%= "(#{membership.post})" if membership.post %>
+              <%= link_to "Edit", edit_admin_organization_membership_path(@organization, membership) %> | <%= link_to "Delete", admin_organization_membership_path(@organization, membership), method: :delete, data: { confirm: "Are you sure?" } %>
             </li>
           <% end %>
         </ol>
-      </section>
-    <% end %>
+      <% end %>
+      <%= link_to 'Add a member', new_admin_organization_membership_path(@organization) %>
+    </section>
+
     <% unless @organization.posts.empty? %>
       <section>
         <header>

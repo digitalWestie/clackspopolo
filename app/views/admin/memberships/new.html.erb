@@ -1,2 +1,13 @@
-<h1>Admin::Memberships#new</h1>
-<p>Find me in app/views/admin/memberships/new.html.erb</p>
+<h1>New Membership</h1>
+
+<%= form_for @membership, url: admin_organization_memberships_path(@organization), :html => { :class => "form-inline" } do |f| %>
+  <%= render 'shared/errors', :object => @membership %>
+  <div class = "row">
+    <%= f.label :person_id, "Person" %>
+    <%= f.select(:person_id, @people) %>
+  </div>
+  <%= render 'form', :f => f %>
+  <hr/>
+  <%= f.submit "Save", :class => "btn" %> |
+  <%= link_to 'Back to organisation', admin_organization_path(@organization) %>
+<% end %>
