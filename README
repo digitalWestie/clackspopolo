@@ -17,3 +17,18 @@ https://github.com/tmtmtmtm/eduskunta-popolo
 == Notes
 
 NB. the allow_dynamic_fields option in mongoid.yml has been set from the default, true to false
+
+== DONE
+
+Managing Organisations, People, Memberships, Posts
+
+
+== TODO
+
+- Handle strong attributes for organisations, people, and posts
+- JS for adding/removing nested contacts/links/sources for Organisations
+- Duplicate above out to People, Memberships, Posts
+- Add managers for: Count / Motion / Vote / Vote Event
+- Add bootstrap and tidy up
+- Add admin approval manager
+- Add browsing pages
