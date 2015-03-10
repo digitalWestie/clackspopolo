@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '2.1.5'
+ruby '2.2.0'
 
 gem 'rails', '~> 4.1.0'
 
@@ -31,9 +31,13 @@ gem 'popolo', :github => "digitalWestie/popolo-engine"
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
+group :test, :development do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+  gem 'rspec-rails', '~> 3.0'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'poltergeist', '~> 1.6.0'
 end
 
 gem 'devise'
