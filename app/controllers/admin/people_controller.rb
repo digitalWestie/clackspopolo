@@ -51,6 +51,10 @@ class Admin::PeopleController < Admin::AdminController
   def person_params
     handle_date_params(params[:person], "birth_date")
     handle_date_params(params[:person], "death_date")
+    params.require(:people).permit(:name, :family_name, :given_name, :additional_name, :sort_name, 
+      :email, :gender, :national_identity, :summary, :biography, :image, :birth_date, :death_date,
+      sources: [:url, :note], links: [:url, :note],
+      contact_details: [:label, :type, :value, :note])
   end
 
 end

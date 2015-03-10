@@ -55,6 +55,10 @@ class Admin::OrganizationsController < Admin::AdminController
   def organization_params
     handle_date_params(params[:organization], "founding_date")
     handle_date_params(params[:organization], "dissolution_date")
+    params.require(:organization).permit(:name, :classification, :abstract, :founding_date, 
+      :dissolution_date, :description, :image,
+      sources: [:url, :note], links: [:url, :note],
+      contact_details: [:label, :type, :value, :note])
   end
 
 end
