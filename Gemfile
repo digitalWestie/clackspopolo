@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '2.1.2'
+ruby '2.1.5'
 
 gem 'rails', '~> 4.1.0'
 
@@ -38,3 +38,5 @@ end
 
 gem 'devise'
 gem 'pry'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
