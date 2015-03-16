@@ -1,6 +1,11 @@
-<%= f.label :url %>
-<%= f.text_field :url %><br/>
-<%= f.label :note, :title => "What is the page about?" %>
-<%= f.text_field :note %>
-<br/>
-<%= f.hidden_field :_destroy %>
+<div class = "delete_object">
+  <!-- <%= f.object_name %> -->
+  <%= f.label :url %>
+  <%= f.text_field :url %><br/>
+  <%= f.label :note, :title => "What is the page about?" %>
+  <%= f.text_field :note %>
+  <br/>
+  <%= f.hidden_field :_destroy %>
+  
+  <%= link_to 'Delete', '#', class: "delete_association" %>
+</div>

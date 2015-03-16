@@ -27,6 +27,7 @@ class Admin::OrganizationsController < Admin::AdminController
 
   def edit
     @organization = Popolo::Organization.find(params[:id])
+    Rails.logger.info @organization.contact_details.count
   end
 
   def update
@@ -57,8 +58,9 @@ class Admin::OrganizationsController < Admin::AdminController
     handle_date_params(params[:organization], "dissolution_date")
     params.require(:organization).permit(:name, :classification, :abstract, :founding_date, 
       :dissolution_date, :description, :image,
-      sources: [:url, :note], links: [:url, :note],
-      contact_details: [:label, :type, :value, :note])
+      sources_attributes: [:url, :note, :_destroy, :id], 
+      links_attributes: [:url, :note, :_destroy, :id],
+      contact_details_attributes: [:label, :type, :value, :note, :_destroy, :id])
   end
 
 end
