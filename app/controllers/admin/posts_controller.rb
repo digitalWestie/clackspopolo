@@ -52,9 +52,10 @@ class Admin::PostsController < Admin::AdminController
   def post_params
     handle_date_params(params[:post], "start_date")
     handle_date_params(params[:post], "end_date")
-    params.require(:post).permit(:label, :other_label, :role,
-      :start_date, :end_date, sources: [:url, :note], links: [:url, :note],
-      contact_details: [:label, :type, :value, :note])
+    params.require(:post).permit(:label, :other_label, :role, :start_date, :end_date, 
+      sources_attributes: [:url, :note, :_destroy, :id], 
+      links_attributes: [:url, :note, :_destroy, :id],
+      contact_details_attributes: [:label, :type, :value, :note, :_destroy, :id])
   end
 
 end

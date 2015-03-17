@@ -48,8 +48,10 @@ class Admin::MembershipsController < Admin::AdminController
     handle_date_params(params[:membership], "start_date")
     handle_date_params(params[:membership], "end_date")
     params.require(:membership).permit(:label, :role, :post_id, :person_id, :organization_id,
-      :start_date, :end_date, sources: [:url, :note], links: [:url, :note],
-      contact_details: [:label, :type, :value, :note])
+      :start_date, :end_date, 
+      sources_attributes: [:url, :note, :_destroy, :id], 
+      links_attributes: [:url, :note, :_destroy, :id],
+      contact_details_attributes: [:label, :type, :value, :note, :_destroy, :id])
   end
 
 end
