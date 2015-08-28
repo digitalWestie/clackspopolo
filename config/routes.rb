@@ -10,10 +10,12 @@ Rails.application.routes.draw do
     resources :organizations do
       resources :posts, only: [:create, :new, :edit, :update, :destroy]
       resources :memberships, only: [:create, :new, :edit, :update, :destroy]
+      resources :motions
     end
 
     resources :people do
     end
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
