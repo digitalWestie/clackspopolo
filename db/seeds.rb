@@ -16,9 +16,9 @@ council = Popolo::Organization.create(name: 'Clackmannanshire Council', classifi
 
 labour = Popolo::Organization.create(name:'Labour Party', classification: 'Political Party')
 tories = Popolo::Organization.create(name:'Conservative Party', classification: 'Political Party')
-nats   = Popolo::Organization.create(name:'SNP', classification: 'Political Party')
+nats   = Popolo::Organization.create(name:'Scottish National Party', classification: 'Political Party')
 libdems   = Popolo::Organization.create(name:'Liberal Democrats', classification: 'Political Party')
-greens = Popolo::Organization.create(name:'Green Party', classification: 'Political Party') # no greens...
+#greens = Popolo::Organization.create(name:'Scottish Green Party', classification: 'Political Party') 
 
 puts "Created #{Popolo::Organization.count} organizations"
 
@@ -103,4 +103,3 @@ councillor_post = Popolo::Post.create(organization:council, role: 'Councillor', 
 memberships.each { |m| councillor_post.memberships << m }
 
 puts "Created #{Popolo::Post.count} posts"
-
