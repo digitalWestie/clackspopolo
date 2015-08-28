@@ -8,26 +8,26 @@
 </head>
 <body>
 
-<div class = "row-fluid">
-  <div id = "navigation-options" class = "">
-    <ul>
-      <li class=""><%= link_to 'Home', main_app.root_path %>
+
+<nav id = "navigation-options" class = "bourbon">
+  <ul>
+    <li class=""><%= link_to 'Home', main_app.root_path %>
+    </li>
+    <% if current_admin %>
+      <li class=""><%= link_to 'Profile', main_app.edit_admin_registration_path,
+        :class => controller.controller_name.eql?('registrations') ? "active" : "" %>
       </li>
-      <% if current_admin %>
-        <li class=""><%= link_to 'Profile', main_app.edit_admin_registration_path,
-          :class => controller.controller_name.eql?('registrations') ? "active" : "" %>
-        </li>
-        <%= content_tag(:li, link_to('Administer', main_app.admin_organizations_path)) unless admin_namespace? %>
-        </li>
-        <li class="">
-          <%= link_to('Sign out'.html_safe, main_app.destroy_admin_session_path, :method => :delete, :class => "") %>
-        </li>
-      <% else %>
-        <li class=""><%= link_to('Sign in'.html_safe, main_app.new_admin_session_path, :class => "") %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+      <%= content_tag(:li, link_to('Administer', main_app.admin_organizations_path)) unless admin_namespace? %>
+      </li>
+      <li class="">
+        <%= link_to('Sign out'.html_safe, main_app.destroy_admin_session_path, :method => :delete, :class => "") %>
+      </li>
+    <% else %>
+      <li class=""><%= link_to('Sign in'.html_safe, main_app.new_admin_session_path, :class => "") %></li>
+    <% end %>
+  </ul>
+</nav>
+
 
 <%= content_tag(:div, notice, :class => "alert info notice") unless notice.blank? %>
 <%= content_tag(:div, alert, :class => "alert") unless alert.blank? %>

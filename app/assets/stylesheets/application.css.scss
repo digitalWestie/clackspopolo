@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+*/
+
+@import "bourbon/bourbon";
+@import "base/base";
+
+.reduced-font {
+  font-size:0.70em;
+}
+
+body { padding: 0; margin: 0 }
+
+nav.bourbon{
+  background-color:#5B5E63;
+  padding:0 2em 0 1em
+}
+
+nav.bourbon:after{
+  content:"";
+  display:table;
+  clear:both
+}
+
+@media screen and (max-width: 31.875em){
+  nav.bourbon{
+    padding:0
+  }
+}
+
+nav.bourbon ul{
+  text-align:center
+}
+
+@media screen and (min-width: 56.3125em){
+  nav.bourbon ul{
+    float:left;
+    text-align:left
+  }
+
+}
+
+nav.bourbon li{
+  display:inline-block
+}
+
+nav.bourbon a{
+  background-position:1em center;
+  background-repeat:no-repeat;
+  color:#fff;
+  display:inline-block;
+  font-weight:bold;
+  padding:1em 1em 1em 1em
+}
+
+@media screen and (max-width: 32.1875em){
+  nav.bourbon a{
+    padding:.75em .5em;
+    text-align:center
+  }
+
+}
+
+@media screen and (max-width: 56.25em){
+  nav.bourbon a{
+    display:block
+  }
+
+}
+
+nav.bourbon a:hover{
+  background-color:#434548;
+  color:#fff
+}
+
+nav.bourbon a.current{
+  background-color:#4f5156
+}
+
+nav.bourbon a.bourbon{
+  background-image:url("/images/bourbon-nav/bourbon.png")

@@ -13,6 +13,8 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier'
+  gem 'bourbon'
+  gem 'bitters'
 end
 
 gem 'jquery-rails'
