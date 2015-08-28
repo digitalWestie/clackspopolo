@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def admin_namespace?
+    controller.class.name.split("::").first=="Admin"
+  end
+
   def select_day_with_blank_tag(name, options={})
     days = (1..31).collect {|d| d }
     days.insert(0, "")
