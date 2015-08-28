@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 <nav id = "navigation-options" class = "bourbon">
   <ul>
     <li class=""><%= link_to 'Home', main_app.root_path %>
@@ -32,7 +31,9 @@
 <%= content_tag(:div, notice, :class => "alert info notice") unless notice.blank? %>
 <%= content_tag(:div, alert, :class => "alert") unless alert.blank? %>
 
-<%= yield %>
+<div style="margin:0 auto; width:96%; padding: 2%;">
+  <%= yield %>
+</div>
 
 </body>
 </html>
