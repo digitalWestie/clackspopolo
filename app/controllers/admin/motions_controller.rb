@@ -2,6 +2,10 @@ class Admin::MotionsController < Admin::AdminController
   
   before_filter :set_organization
 
+  def index
+    @motions = @organization.motions
+  end
+
   def new
     @motion = @organization.motions.build
     @people = @organization.memberships.collect { |m| [m.person.to_s, m.person.id] }

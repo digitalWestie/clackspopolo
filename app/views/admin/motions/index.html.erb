@@ -1,2 +1,17 @@
-<h1>Admin::Motions#index</h1>
-<p>Find me in app/views/admin/motions/index.html.erb</p>
+<h1><%= link_to @organization, admin_organization_path(@organization) %>: Motions</h1>
+<%= link_to 'Add a motion', new_admin_organization_motion_path, class: "btn" %>
+<hr/>
+<table>
+  <th>Motion</th>
+  <th>Identifier</th>
+  <th>Proposer</th>
+  <th>Actions</th>
+  <% for motion in @motions %>
+  <tr>
+    <td><%= motion.to_s %></td>
+    <td><%= motion.identifier %></td>
+    <td><%= motion.creator %></td>
+    <td><%= link_to "Edit", edit_admin_organization_motion_path(@organization, motion) %> | <%= link_to "Delete", admin_organization_motion_path(@organization, motion) %></td>
+  </tr>
+  <% end %>
+</table>
