@@ -1,12 +1,23 @@
 <h1>Clacks Popolo</h1>
-<h2>Browse organizations</h2>
-<ul>
+<h2>Organizations</h2>
 <% for org in @organizations %>
-  <li><%= link_to org.name, popolo.organization_path(org) %></li>
-<% end %>
-</ul>
+  <h3><%= link_to org.name, popolo.organization_path(org) %></h3>
+  <%= content_tag :h4, "Motions" unless org.motions.blank? %>
 
-<h2>Posts</h2>
-<% for post in @posts %>
-  <%= link_to post.label, popolo.post_path(post) %>
+  <% for motion in org.motions %>
+    <div id="<%="motion-#{motion.id}"%>">
+      <h5><%= "#{motion.identifier} proposed by #{motion.creator} on #{motion.date}" %> - <%= link_to 'Expand', "#motion-#{motion.id}", class: "motion-expand" %></h5>
+      <p class="motion-text" style="display:none;" id="<%= "#motion-#{motion.id}" %>"><%= motion.text %></p>
+    </div>
+  <% end %>
+
+  <hr/>
+<% end %>
+
+<%= content_for :javascript_footer do %>
+  $('p.motion-text').hide();
+  $('a.motion-expand').click(function(e){ 
+    var par = $(this).attr('href');
+    $(par).children('.motion-text').slideToggle();
+  });
 <% end %>
