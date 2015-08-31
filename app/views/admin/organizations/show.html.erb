@@ -15,6 +15,7 @@
             <%= link_to 'Remove', admin_organization_path(@organization), data: { confirm: "Are you sure?" }, method: :delete %>
           </span>
         </h1>
+        <p><%= link_to "Motions", admin_organization_motions_path(@organization) %></p>
       </div>
     </div>
   </header>
@@ -92,38 +93,42 @@
       <header>
         <h2><%= Popolo::Membership.model_name.human(count: @organization.memberships.size) %></h2>
       </header>
-      <% unless @organization.memberships.empty? %>
-        <ol>
-          <% @organization.memberships.each do |membership| %>
-            <li>
-              <%= membership.to_s(format: :person) %>
-              <%= "(#{membership.post})" if membership.post %>
-              <%= link_to "Edit", edit_admin_organization_membership_path(@organization, membership) %> | <%= link_to "Delete", admin_organization_membership_path(@organization, membership), method: :delete, data: { confirm: "Are you sure?" } %>
-            </li>
-          <% end %>
-        </ol>
-      <% end %>
-      <%= link_to 'Add a member', new_admin_organization_membership_path(@organization) %>
+      <%= link_to 'Add a member', new_admin_organization_membership_path(@organization) %>    
+      <table>
+        <th>Member</th>
+        <th>Post</th>
+        <th>Actions</th>
+        <% @organization.memberships.each do |membership| %>
+          <tr>
+            <td><%= membership.to_s(format: :person) %></td>
+            <td><%= "(#{membership.post})" if membership.post %></td>
+            <td><%= link_to "Edit", edit_admin_organization_membership_path(@organization, membership) %> | <%= link_to "Delete", admin_organization_membership_path(@organization, membership), method: :delete, data: { confirm: "Are you sure?" } %></td>
+          </tr>
+        <% end %>
+      </table>    
     </section>
+    
+    <br/>
 
-    <% unless @organization.posts.empty? %>
-      <section>
-        <header>
-          <h2>
-            Posts
-          </h2>
-        </header>
-        <ol>
-          <% @organization.posts.each do |post| %>
-            <li>
-              <%= link_to post, edit_admin_organization_post_path(@organization, post) %>
-              <%= link_to "Remove", admin_organization_post_path(@organization, post), method: :delete %>
-            </li>
-          <% end %>
-        </ol>
-        <%= link_to 'Add post', new_admin_organization_post_path(@organization) %>
-      </section>
-    <% end %>
+    <section>
+      <header><h2> Posts </h2></header>
+      <%= link_to 'Add a post', new_admin_organization_post_path(@organization) %>
+      <table>
+        <th>Name of post</th>
+        <th>Actions</th>
+        <% @organization.posts.each do |post| %>
+        <tr>
+          <td><%= post %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_organization_post_path(@organization, post) %> | 
+            <%= link_to "Remove", admin_organization_post_path(@organization, post), method: :delete %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+
+    </section>
+  
     <% unless @organization.children.empty? %>
       <section>
         <header>
