@@ -16,7 +16,8 @@
       <li class=""><%= link_to 'Profile', main_app.edit_admin_registration_path,
         :class => controller.controller_name.eql?('registrations') ? "active" : "" %>
       </li>
-      <%= content_tag(:li, link_to('Administer', main_app.admin_organizations_path)) unless admin_namespace? %>
+      <% klass = admin_namespace? ? "active" : "" %>
+      <%=  content_tag(:li, link_to('Administer', main_app.admin_organizations_path), class: klass) %>
       </li>
       <li class="">
         <%= link_to('Sign out'.html_safe, main_app.destroy_admin_session_path, :method => :delete, :class => "") %>

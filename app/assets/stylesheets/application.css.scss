@@ -47,6 +47,10 @@ nav.bourbon li{
   display:inline-block
 }
 
+nav.bourbon li.active { 
+  background-color: #63605b;
+}
+
 nav.bourbon a{
   background-position:1em center;
   background-repeat:no-repeat;
