@@ -6,18 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Popolo::Organization.destroy_all
-Popolo::Person.destroy_all
-Popolo::Membership.destroy_all
-Popolo::Post.destroy_all
-
-
 council = Popolo::Organization.create(name: 'Clackmannanshire Council', classification: 'Local Authority')
 
 labour = Popolo::Organization.create(name:'Labour Party', classification: 'Political Party')
 tories = Popolo::Organization.create(name:'Conservative Party', classification: 'Political Party')
 nats   = Popolo::Organization.create(name:'Scottish National Party', classification: 'Political Party')
-libdems   = Popolo::Organization.create(name:'Liberal Democrats', classification: 'Political Party')
+#libdems   = Popolo::Organization.create(name:'Liberal Democrats', classification: 'Political Party')
 #greens = Popolo::Organization.create(name:'Scottish Green Party', classification: 'Political Party') 
 
 puts "Created #{Popolo::Organization.count} organizations"
@@ -82,7 +76,8 @@ labour.memberships.create(person:councillors.last)
 councillors << Popolo::Person.create(given_name: 'Jim', family_name:'Stalker')# , Labour
 labour.memberships.create(person:councillors.last)
 
-councillors << Popolo::Person.create(given_name: 'Les', family_name:'Sharp')# , Scottish National Party
+les = Popolo::Person.create(given_name: 'Les', family_name:'Sharp')# , Scottish National Party
+councillors << les
 nats.memberships.create(person:councillors.last)
 
 councillors << Popolo::Person.create(given_name: 'Tina', family_name:'Murphy')# , Scottish National Party
@@ -103,3 +98,14 @@ councillor_post = Popolo::Post.create(organization:council, role: 'Councillor', 
 memberships.each { |m| councillor_post.memberships << m }
 
 puts "Created #{Popolo::Post.count} posts"
+
+text = "That Council agrees the recommendations set out in the report.\n\nThe Council agreed: \n
+1.   From the Resources and Audit Committee of 26th February, 2015 in relation to the report entitled \"Clackmannanshire Council Internal Audit and Fraud Annual Plan 2015/16\" •
+     To formally approve the Internal Audit and Fraud Annual Plan 2015/16 "
+
+motion = council.motions.build(identifier: "CC.304", date: "14/05/2015")
+motion.creator = les
+motion.text = text
+motion.save
+puts "Created example motion"
+
