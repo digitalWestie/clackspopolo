@@ -5,12 +5,14 @@
 
 <div class = "row">
 <%= f.label :founding_date %>
-<%= f.date_select :founding_date, include_blank: true, start_year: 1900, class: 'form-control' %>
+<p>Please format dates as DD/MM/YYYY</p>
+<%= f.text_field :founding_date, class: "form-control" %>
 </div>
 
 <div class = "row">
 <%= f.label :dissolution_date %>
-<%= f.date_select :dissolution_date, include_blank: true, start_year: 1980, class: 'form-control' %>
+<p>Leave blank if not applicable</p>
+<%= f.text_field :dissolution_date, class: 'form-control' %>
 </div>
 
 <div class = "row">

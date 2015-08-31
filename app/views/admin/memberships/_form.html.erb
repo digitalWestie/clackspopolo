@@ -17,22 +17,14 @@
 
 <div class = "row">
   <%= f.label :start_date, "Date of membership started" %>
-  <p>The date the membership started.</p>
-  <p>
-  <%= select_day_with_blank_tag "membership[start_date(3i)]", selected: f.object.start_date %>
-  <%= select_month_with_blank_tag "membership[start_date(2i)]", selected: f.object.start_date %>
-  <%= text_field_tag "membership[start_date(1i)]", f.object.start_date.try(:year), placeholder: "Year e.g. 1984", style: "width:6.9em;" %>
-  </p>
+  <p>The date the membership started, please format as DD/MM/YYYY.</p>
+  <%= f.text_field :start_date, class: "form-control" %>
 </div>
 
 <div class = "row">
   <%= f.label :end_date, "Date of membership ended" %>
-  <p>The date the membership ended. Leave blank if person is still a member.</p>
-  <p>
-  <%= select_day_with_blank_tag "membership[end_date(3i)]", selected: f.object.end_date %>
-  <%= select_month_with_blank_tag "membership[end_date(2i)]", selected: f.object.end_date %>
-  <%= text_field_tag "membership[end_date(1i)]", f.object.end_date.try(:year), placeholder: "Year e.g. 1984", style: "width:6.9em;" %>
-  </p>
+  <p>The date the membership ended. Leave blank if membership continues.</p>
+  <p><%= f.text_field :end_date, class: "form-control" %></p>
 </div>
 
 <%= render 'admin/shared/sources_links_contacts', f: f %>
