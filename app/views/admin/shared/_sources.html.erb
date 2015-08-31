@@ -1,0 +1,7 @@
+<%= field_set_tag 'Sources' do %>
+  <%= content_tag :p, "What sources were referenced in order to create this #{f.object.model_name.human}?" %>
+  <%= f.fields_for :sources do |sf| %>
+    <%= render 'admin/shared/linkable_fields', f: sf %>
+  <% end %>
+  <%= link_to_add_fields('Add source link', f, "sources", partial_location: "admin/shared/linkable_fields") %>
+<% end %>

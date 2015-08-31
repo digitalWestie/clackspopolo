@@ -1,0 +1,25 @@
+<%= f.hidden_field :organization_id %>
+
+<div class = "row">
+  <%= f.label :creator_id, "Creator, or proposer of the motion" %>
+  <%= f.select(:creator_id, @people, include_blank: false) %>
+</div>
+
+<div class = "row">
+  <%= f.label :identifier %>
+  <%= f.text_field :identifier %>
+</div>
+
+<div class = "row">
+  <%= f.label :date %>
+  <p>The date the motion was proposed, please format as DD/MM/YYYY.</p>
+  <%= f.text_field :date, class: "form-control" %>
+</div>
+
+<div class = "row">
+  <%= f.label :text %>
+  <p>A transcript or text of the motion.</p>
+  <%= f.text_area :text %>
+</div>
+
+<%= render 'admin/shared/sources', f: f %>
